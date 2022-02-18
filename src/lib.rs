@@ -69,9 +69,9 @@ extern crate bitflags;
 pub mod native_cpuid {
     use crate::CpuIdResult;
 
-    #[cfg(all(target_arch = "x86", not(target_env = "sgx"), target_feature = "sse"))]
+    #[cfg(any(all(target_arch = "x86", not(target_env = "sgx"), target_feature = "sse"), feature = "target-x86-has-cpuid"))]
     use core::arch::x86 as arch;
-    #[cfg(all(target_arch = "x86_64", not(target_env = "sgx")))]
+    #[cfg(any(all(target_arch = "x86_64", not(target_env = "sgx")), feature = "target-x86_64-has-cpuid"))]
     use core::arch::x86_64 as arch;
 
     pub fn cpuid_count(a: u32, c: u32) -> CpuIdResult {

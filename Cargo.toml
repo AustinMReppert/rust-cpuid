@@ -22,6 +22,8 @@ required-features = ["cli"]
 serialize = ["serde", "serde_derive"]
 # This is not a library feature and should only be used to install the cpuid binary:
 cli = ["termimad", "clap", "serde_json", "serialize"]
+target-x86-has-cpuid = []
+target-x86_64-has-cpuid = []
 
 [dependencies]
 bitflags = "1.2"
